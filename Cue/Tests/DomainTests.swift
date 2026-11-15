@@ -1,6 +1,6 @@
+import CueDomain
 import Foundation
 import Testing
-import CueDomain
 
 struct ConfidenceTests {
     @Test(arguments: [(-0.5, 0.0), (0.0, 0.0), (0.42, 0.42), (1.0, 1.0), (7.0, 1.0)])
@@ -19,9 +19,10 @@ struct ConfidenceTests {
 
 struct BeliefTests {
     @Test func keepsItsSource() {
-        let belief = Belief(subject: "intent", statement: "Cooking",
-                            confidence: Confidence(0.91), source: .user,
-                            observedAt: Date(timeIntervalSince1970: 0))
+        let belief = Belief(
+            subject: "intent", statement: "Cooking",
+            confidence: Confidence(0.91), source: .user,
+            observedAt: Date(timeIntervalSince1970: 0))
         #expect(belief.source == .user)
         #expect(belief.confidence.value == 0.91)
     }

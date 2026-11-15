@@ -2,7 +2,8 @@ import Foundation
 
 /// How much it matters to resolve an unknown.
 public enum Importance: Int, Hashable, Comparable, Sendable, CaseIterable {
-    case veryLow = 0, low, medium, high, veryHigh
+    case veryLow = 0
+    case low, medium, high, veryHigh
 
     public static func < (lhs: Importance, rhs: Importance) -> Bool { lhs.rawValue < rhs.rawValue }
 }

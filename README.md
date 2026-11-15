@@ -15,11 +15,23 @@ Cue decides what to do next. Prism can later become one of Cue's evidence source
 | --- | --- |
 | `Cue/Domain` | Core types (beliefs, confidence, unknowns). Foundation only. |
 | `Cue/Tests` | Swift Testing suites |
+| `Cue/App` | iPhone app entry point and the placeholder "Next" card (SwiftUI) |
+| `Cue.xcodeproj` | iPhone app target (`com.slpcc63.cue`), uses the local package |
+| `Scripts/archive-testflight.sh` | Signed Release archive and TestFlight upload ([Docs/TestFlight.md](Docs/TestFlight.md)) |
 
-Services, Persistence, Features and the iPhone app target arrive in M1.
+Services, Persistence and Features targets arrive in M1.
 
 ## Test
 
+This Mac's `xcode-select` points at Command Line Tools, which lack Swift Testing,
+so use full Xcode's toolchain:
+
 ```sh
-swift test
+DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer swift test
+```
+
+## Lint
+
+```sh
+xcrun swift-format lint -r Cue Package.swift
 ```

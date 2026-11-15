@@ -10,10 +10,12 @@ in-repo checklist: updated at the end of every work session.
 - [x] GitHub repo created (slpcc63/cue)
 - [x] Swift package with the domain layer (Belief, Confidence, Unknown) and tests
 - [x] PLAN.md, NEVER-DO.md and .compass files in repo
-- [ ] Claude Code installed on Shannon's Mac, working in this repo
-- [ ] `swift test` passes on the Mac (first compile of this code)
-- [ ] iPhone app target created (bundle ID `com.slpcc63.cue`), placeholder "Next" card
-- [ ] App record "Cue by SLPCC63" in App Store Connect; build uploaded via a TestFlight script adapted from Prism's
+- [x] Claude Code installed on Shannon's Mac, working in this repo
+- [x] `swift test` passes on the Mac (first compile of this code)
+- [x] iPhone app target created (bundle ID `com.slpcc63.cue`), placeholder "Next" card
+- [x] TestFlight script adapted from Prism's (`Scripts/archive-testflight.sh`, `Docs/TestFlight.md`)
+- [ ] App record "Cue by SLPCC63" in App Store Connect (Shannon, in the web UI)
+- [ ] Build 0.0.1 (1) uploaded via the TestFlight script (needs Shannon's go-ahead)
 - [ ] Cue opens on Shannon's iPhone from TestFlight
 
 ## Then: Prism P1 · Reminders (Nov 23–29) and P2 · V0 hardening (Nov 30–Dec 6)
@@ -58,3 +60,10 @@ Every belief records its source, so Prism can plug in later as a source.
   domain package added. This code has not been compiled yet: the first `swift test`
   runs on the Mac.
 - 2026-11-14: Prism's V0 milestones scheduled before Cue M1; Cue dates moved back two weeks (M1 Dec 7–20, Gate B ends Apr 25).
+- 2026-11-14: First compile on the Mac: `swift test` passes (5 tests, 3 suites) with
+  Xcode 26.6's toolchain (`DEVELOPER_DIR`, since `xcode-select` points at Command
+  Line Tools). Added `.swift-format` (4-space indent) and fixed lint. Added the iPhone
+  app target (`Cue.xcodeproj`, `Cue/App`) with the placeholder Next card and a
+  placeholder icon; Debug simulator and unsigned Release device builds succeed, and
+  the card renders in the iOS 26.5 simulator. Adapted Prism's TestFlight script.
+  Remaining for Phase 0: App Store Connect record, first upload, install on iPhone.

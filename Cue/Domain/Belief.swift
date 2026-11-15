@@ -46,8 +46,10 @@ public struct Belief: Hashable, Sendable, Identifiable {
     /// When the evidence for this belief was observed.
     public var observedAt: Date
 
-    public init(id: UUID = UUID(), subject: String, statement: String,
-                confidence: Confidence, source: BeliefSource, observedAt: Date) {
+    public init(
+        id: UUID = UUID(), subject: String, statement: String,
+        confidence: Confidence, source: BeliefSource, observedAt: Date
+    ) {
         self.id = id
         self.subject = subject
         self.statement = statement
