@@ -16,7 +16,11 @@ in-repo checklist: updated at the end of every work session.
 - [ ] App record "Cue by SLPCC63" in App Store Connect; build uploaded via a TestFlight script adapted from Prism's
 - [ ] Cue opens on Shannon's iPhone from TestFlight
 
-## Next: M1 · "You have to leave in 18 minutes" (Nov 23–Dec 6)
+## Then: Prism P1 · Reminders (Nov 23–29) and P2 · V0 hardening (Nov 30–Dec 6)
+
+One milestone at a time across both apps; Prism's V0 finishes first. See the Prism tab in the plan doc.
+
+## Next for Cue: M1 · "You have to leave in 18 minutes" (Dec 7–20)
 
 - Calendar reading (EventKit)
 - Saved places with a fixed commute time (Shannon walks/bikes 6–8 blocks; no live traffic)
@@ -53,3 +57,4 @@ Every belief records its source, so Prism can plug in later as a source.
 - 2026-11-14: Switched to Swift + SwiftUI to match Prism. Expo files removed;
   domain package added. This code has not been compiled yet: the first `swift test`
   runs on the Mac.
+- 2026-11-14: Prism's V0 milestones scheduled before Cue M1; Cue dates moved back two weeks (M1 Dec 7–20, Gate B ends Apr 25).
