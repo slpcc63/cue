@@ -37,6 +37,23 @@ Done when (Shannon ticks these on her phone):
 - [ ] Why? shows the event, commute time and buffer
 - [ ] Notification arrives with the phone locked
 
+## Daybreak as a parts bin
+
+Decided 2026-11-14: Cue is a fresh start, not a continuation of Daybreak/AWA
+([slpcc63/adaptive-workday-assistant](https://github.com/slpcc63/adaptive-workday-assistant)).
+Daybreak's `Sources/WorkdayCore` holds decision logic that was tested on Shannon's
+iPhone in September. Port a piece only when the current milestone needs it, with its
+tests, adapted to Cue's layers:
+
+| Cue milestone | Daybreak source to reuse |
+| --- | --- |
+| M1 Leave time | `CalendarPipeline.swift`, `AlertReconciliation.swift` (departure math, stable alert identities) |
+| M2 Getting ready | `PreparationPlan.swift`, `ShiftAttentionPlan.swift` (routines, per-shift states) |
+| M3 Real durations | `RecoveryAndActivity.swift` (p80 duration history, Can I Start?) |
+| M4 Running Late | `RecoveryAndActivity.swift` (critical → important → optional fit) |
+
+Never copy Daybreak's app layer or UI wholesale; never change Daybreak's repo.
+
 ## Architecture
 
 Same layering as Prism (slpcc63/pulse): Features (SwiftUI) → Services → Domain,
