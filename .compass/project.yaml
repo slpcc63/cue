@@ -1,0 +1,10 @@
+schemaVersion: 1
+# projectId: set when the Cue project is created in Compass
+projectType: Software
+repository: https://github.com/slpcc63/cue
+connectionProfile: shannon-compass
+productionGuide: .compass/production.yaml
+reportBack:
+  report_back_to: Executive-Function Assistant — Product Plan & Roadmap
+  report_back_url: https://claude.ai/artifact/71aPsnW6ncRfEAhNqEkCyD
+  report_back_instructions: Report the exact Cue revision and build, test and distribution evidence, the milestone's done-when status, remaining blockers, and any owner decision or acceptance.

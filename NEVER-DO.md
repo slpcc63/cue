@@ -9,3 +9,6 @@ Breaking any of these needs an explicit decision from Shannon, recorded in the p
 - No new devices (watch, car, desktop, voice) before Phase 3.
 - The decision engine never calls an AI model directly; models sit behind the model adapter.
 - Never two milestone branches open at once.
+- The Domain layer never imports SwiftUI, SwiftData or UserNotifications.
+- Cue never reads Prism's database directly; it uses Prism's structured query interface.
+- Never reuse an uploaded TestFlight build number.

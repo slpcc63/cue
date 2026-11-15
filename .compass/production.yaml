@@ -1,0 +1,56 @@
+schemaVersion: 1
+title: Cue software production workflow
+version: "1.0"
+purpose: Deliver the local-first Cue iPhone app one milestone at a time through tested Swift code, signed TestFlight builds, and explicit owner acceptance on Shannon's phone.
+productType: Software
+roles:
+  - id: implementer
+    name: Claude (Claude Code on Shannon's Mac)
+    scope: Make authorized changes in https://github.com/slpcc63/cue within the current milestone's frozen scope, and produce an exact reviewable revision.
+    reportBack: https://claude.ai/artifact/71aPsnW6ncRfEAhNqEkCyD
+  - id: owner
+    name: Shannon
+    scope: Product owner. Makes decisions and gives acceptance; acceptance is never inferred from implementation or upload.
+references:
+  - label: Plan, decisions and roadmap
+    path: PLAN.md
+  - label: Never-do list
+    path: NEVER-DO.md
+phases:
+  - id: plan
+    title: Confirm milestone scope
+    owner: implementer
+    inputs: [Current milestone in PLAN.md, Plan doc]
+    outputs: [Frozen scope for the milestone, Milestone branch m<N>]
+    requirements: [One milestone at a time, New ideas go to the Parking lot]
+  - id: develop
+    title: Implement on the milestone branch
+    owner: implementer
+    inputs: [Frozen scope, Clean main]
+    outputs: [Reviewable source changes, Updated PLAN.md session log]
+    requirements: [Obey NEVER-DO.md, No credentials or private data in Git, Domain layer imports Foundation only]
+  - id: qa
+    title: Verify the exact candidate
+    owner: implementer
+    inputs: [Exact candidate revision]
+    outputs: [swift test evidence, iOS Release build result]
+    requirements: [All automated tests pass, Release target builds, Working tree is clean before archive]
+    checkpoint: chat-review
+  - id: distribute
+    title: Archive and upload to TestFlight
+    owner: implementer
+    inputs: [Committed and pushed passing revision]
+    outputs: [Processed TestFlight build assigned to Owner Testing]
+    requirements: [Bundle ID com.slpcc63.cue, Never reuse an uploaded build number]
+    checkpoint: shannon-approval
+  - id: accept
+    title: Owner acceptance on iPhone
+    owner: owner
+    inputs: [Installed TestFlight build, Milestone done-when checklist]
+    outputs: [Ticked done-when boxes or a concrete defect]
+    requirements: [Do not treat installation as acceptance]
+    checkpoint: shannon-approval
+finalApproval:
+  by: Shannon
+  requirements: [Every done-when box for the milestone ticked on her phone]
+completionTarget: verified-publication

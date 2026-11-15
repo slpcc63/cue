@@ -6,16 +6,20 @@ in-repo checklist: updated at the end of every work session.
 
 ## Current milestone: Phase 0 · Setup (Nov 16–22, 2026)
 
-- [x] Key decisions made (iPhone, Expo + TypeScript, on-phone data, model adapter for AI, one repo, shifts in calendar, name: Cue)
+- [x] Key decisions made (iPhone, Swift + SwiftUI, on-phone data, model adapter for AI, one repo, shifts in calendar, name: Cue)
 - [x] GitHub repo created (slpcc63/cue)
-- [x] Expo app skeleton with placeholder "Next" card
-- [x] PLAN.md and NEVER-DO.md in repo
-- [ ] App opens on Shannon's iPhone through Expo Go
+- [x] Swift package with the domain layer (Belief, Confidence, Unknown) and tests
+- [x] PLAN.md, NEVER-DO.md and .compass files in repo
+- [ ] Claude Code installed on Shannon's Mac, working in this repo
+- [ ] `swift test` passes on the Mac (first compile of this code)
+- [ ] iPhone app target created (bundle ID `com.slpcc63.cue`), placeholder "Next" card
+- [ ] App record "Cue by SLPCC63" in App Store Connect; build uploaded via a TestFlight script adapted from Prism's
+- [ ] Cue opens on Shannon's iPhone from TestFlight
 
 ## Next: M1 · "You have to leave in 18 minutes" (Nov 23–Dec 6)
 
-- Calendar reading
-- Saved places with a fixed commute time
+- Calendar reading (EventKit)
+- Saved places with a fixed commute time (Shannon walks/bikes 6–8 blocks; no live traffic)
 - Prep buffer
 - Decision engine skeleton: all 8 pipeline steps, one action (Leave)
 - One-thing home card + Why?
@@ -25,6 +29,13 @@ Done when (Shannon ticks these on her phone):
 - [ ] For 5 real shifts, leave time within 5 minutes of what she'd have chosen
 - [ ] Why? shows the event, commute time and buffer
 - [ ] Notification arrives with the phone locked
+
+## Architecture
+
+Same layering as Prism (slpcc63/pulse): Features (SwiftUI) → Services → Domain,
+with Persistence behind repository interfaces. Time and notifications are
+injected so the engine is testable. The Domain layer imports Foundation only.
+Every belief records its source, so Prism can plug in later as a source.
 
 ## Rules of the road
 
@@ -38,4 +49,7 @@ Done when (Shannon ticks these on her phone):
 
 ## Session log
 
-- 2026-11-14: Phase 0 started. Repo, Expo skeleton (SDK 58), PLAN.md, NEVER-DO.md.
+- 2026-11-14: Phase 0 started with an Expo skeleton.
+- 2026-11-14: Switched to Swift + SwiftUI to match Prism. Expo files removed;
+  domain package added. This code has not been compiled yet: the first `swift test`
+  runs on the Mac.
