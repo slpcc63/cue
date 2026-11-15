@@ -14,8 +14,9 @@ in-repo checklist: updated at the end of every work session.
 - [x] `swift test` passes on the Mac (first compile of this code)
 - [x] iPhone app target created (bundle ID `com.slpcc63.cue`), placeholder "Next" card
 - [x] TestFlight script adapted from Prism's (`Scripts/archive-testflight.sh`, `Docs/TestFlight.md`)
-- [ ] App record "Cue by SLPCC63" in App Store Connect (Shannon, in the web UI)
-- [ ] Build 0.0.1 (1) uploaded via the TestFlight script (needs Shannon's go-ahead)
+- [x] App record "Cue by SLPCC63" in App Store Connect (Shannon, in the web UI)
+- [x] Build 0.0.1 (1) uploaded via the TestFlight script (2026-11-14, from `1ac5790`)
+- [ ] Build 0.0.1 (1) processed and added to Owner Testing in App Store Connect > TestFlight
 - [ ] Cue opens on Shannon's iPhone from TestFlight
 
 ## Then: Prism P1 · Reminders (Nov 23–29) and P2 · V0 hardening (Nov 30–Dec 6)
@@ -68,26 +69,32 @@ Every belief records its source, so Prism can plug in later as a source.
   the card renders in the iOS 26.5 simulator. Adapted Prism's TestFlight script.
   Remaining for Phase 0: App Store Connect record, first upload, install on iPhone.
   Committed and pushed as `75768fd`.
+- 2026-11-14: App Store Connect record created by Shannon. Build 0.0.1 (1) archived
+  from `1ac5790` and uploaded to TestFlight (upload succeeded, processing). Build
+  number raised to 2 on `main`.
 
-## Handoff — where we left off (2026-11-14)
+## Handoff — where we left off (2026-11-14, evening)
 
-State: `main` at `75768fd` is clean and pushed. Tests pass, the app builds and runs
-in the simulator. Nothing has been archived, signed for distribution, or uploaded.
+State: build **0.0.1 (1)** was archived from `1ac5790` and uploaded to App Store
+Connect ("Upload succeeded"; Apple was still processing it). `main` has the build
+number raised to **2** so the next archive cannot reuse 1. Build 1 is uploaded —
+never upload build 1 again.
 
 Next steps, in order:
-1. **Shannon:** create the App Store Connect record: new iOS app "Cue by SLPCC63",
-   bundle ID `com.slpcc63.cue` (register the identifier under Certificates,
-   Identifiers & Profiles first if it isn't offered), team `76GL5MBUM8`.
-2. **Claude, after Shannon confirms step 1:** run
-   `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer ./Scripts/archive-testflight.sh --output /private/tmp/cue-testflight-0.0.1-1-upload --upload`
-   (build 0.0.1 (1), never uploaded before). See `Docs/TestFlight.md`.
-3. **Shannon, in App Store Connect > TestFlight:** answer any compliance prompt and
-   add the build to the Owner Testing group.
-4. **Shannon:** install Cue from TestFlight and tick "Cue opens on Shannon's iPhone".
-   That closes Phase 0; then on to Prism P1.
+1. **Shannon, in App Store Connect > Cue by SLPCC63 > TestFlight:** wait for build
+   1 to finish processing, answer any export-compliance / beta-info prompt, and add
+   it to the Owner Testing internal group (create the group with Shannon as tester
+   if it doesn't exist yet).
+2. **Shannon:** install Cue from the TestFlight app and tick "Cue opens on
+   Shannon's iPhone from TestFlight". That closes Phase 0.
+3. Then Prism P1 · Reminders (Nov 23–29), per the plan above.
+
+If processing fails or Apple emails an issue: fix it, commit, and upload with the
+script using build 2 (already set) and a new output path, e.g.
+`/private/tmp/cue-testflight-0.0.1-2-upload`. See `Docs/TestFlight.md`.
 
 Notes for the next session:
-- Always prefix `swift test` / `xcodebuild` with
+- Always prefix `swift test` / `xcodebuild` / the TestFlight script with
   `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` (or run
   `sudo xcode-select -s /Applications/Xcode.app` once).
 - The app icon is a placeholder (dark background, light card, orange bar); replace
