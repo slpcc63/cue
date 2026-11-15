@@ -67,3 +67,28 @@ Every belief records its source, so Prism can plug in later as a source.
   placeholder icon; Debug simulator and unsigned Release device builds succeed, and
   the card renders in the iOS 26.5 simulator. Adapted Prism's TestFlight script.
   Remaining for Phase 0: App Store Connect record, first upload, install on iPhone.
+  Committed and pushed as `75768fd`.
+
+## Handoff — where we left off (2026-11-14)
+
+State: `main` at `75768fd` is clean and pushed. Tests pass, the app builds and runs
+in the simulator. Nothing has been archived, signed for distribution, or uploaded.
+
+Next steps, in order:
+1. **Shannon:** create the App Store Connect record: new iOS app "Cue by SLPCC63",
+   bundle ID `com.slpcc63.cue` (register the identifier under Certificates,
+   Identifiers & Profiles first if it isn't offered), team `76GL5MBUM8`.
+2. **Claude, after Shannon confirms step 1:** run
+   `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer ./Scripts/archive-testflight.sh --output /private/tmp/cue-testflight-0.0.1-1-upload --upload`
+   (build 0.0.1 (1), never uploaded before). See `Docs/TestFlight.md`.
+3. **Shannon, in App Store Connect > TestFlight:** answer any compliance prompt and
+   add the build to the Owner Testing group.
+4. **Shannon:** install Cue from TestFlight and tick "Cue opens on Shannon's iPhone".
+   That closes Phase 0; then on to Prism P1.
+
+Notes for the next session:
+- Always prefix `swift test` / `xcodebuild` with
+  `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` (or run
+  `sudo xcode-select -s /Applications/Xcode.app` once).
+- The app icon is a placeholder (dark background, light card, orange bar); replace
+  it whenever there's a real one.
