@@ -17,7 +17,8 @@ in-repo checklist: updated at the end of every work session.
 - [x] App record in App Store Connect, renamed "Cue | Doxle" on 2026-11-16 (Shannon, in the web UI)
 - [x] Build 0.0.1 (1) uploaded via the TestFlight script (2026-11-14, from `1ac5790`)
 - [x] Build 0.0.1 (1) processed and added to Owner Testing in App Store Connect > TestFlight
-- [ ] Approved app icon installed: `assets/cue/cue-guiding-ribbon-v1.png` from the Branding folder (1254×1254 opaque RGB; scale to 1024×1024, no alpha, no rounded corners); home-screen label "Cue"
+- [x] Build 0.0.1 (2) with the approved icon uploaded via the TestFlight script (2026-11-16, from `07e00cc`)
+- [ ] Build 2 processed, added to Owner Testing, installed: approved app icon shows on the home screen: `assets/cue/cue-guiding-ribbon-v1.png` from the Branding folder (1254×1254 opaque RGB; scale to 1024×1024, no alpha, no rounded corners); home-screen label "Cue"
 - [x] Cue opens on Shannon's iPhone from TestFlight (build 1, placeholder icon; confirmed by Shannon 2026-11-16)
 
 ## Then: Prism P1 · Reminders (Nov 23–29) and P2 · V0 hardening (Nov 30–Dec 6)
@@ -95,24 +96,30 @@ Every belief records its source, so Prism can plug in later as a source.
   installed it from TestFlight and it opens on her iPhone. Phase 0's only open
   item is the approved app icon.
 
-## Handoff — where we left off (2026-11-16)
+- 2026-11-16: Installed the approved Cue icon (`cue-guiding-ribbon-v1.png`, approved
+  2026-11-15; scaled 1254→1024, opaque RGB, no rounded corners; readable at 120 px).
+  Branding edition: Doxle brand guide of 2026-11-16; no exceptions. `swift test`
+  and the Release device build pass. Build 0.0.1 (2) archived from `07e00cc` and
+  uploaded ("Upload succeeded", processing). Build number raised to 3 on `main`.
 
-State: build **0.0.1 (1)** (placeholder icon) is in TestFlight Owner Testing and
-runs on Shannon's iPhone. `main` has the build number set to **2** — never upload
-build 1 again.
+## Handoff — where we left off (2026-11-16, late)
+
+State: build **0.0.1 (2)**, with the approved icon, was uploaded from `07e00cc`
+and Apple is processing it. `main` has the build number set to **3**. Builds 1
+and 2 are uploaded — never upload either again.
 
 Next steps, in order:
-1. Install the approved icon `assets/cue/cue-guiding-ribbon-v1.png` (read the
-   branding files listed in CLAUDE.md first): scale to 1024×1024, opaque, no
-   rounded corners; home-screen label stays "Cue".
-2. Commit, upload build 2 with a new output path, e.g.
-   `/private/tmp/cue-testflight-0.0.1-2-upload` (see `Docs/TestFlight.md`).
-   Shannon adds it to Owner Testing, installs it and ticks the icon item. That
-   closes Phase 0.
+1. **Shannon, in App Store Connect > Cue | Doxle > TestFlight:** once build 2 has
+   processed, answer any prompt and add it to Owner Testing.
+2. **Shannon:** update Cue from the TestFlight app, check the new icon on the
+   home screen (label "Cue"), and tick the icon item. That closes Phase 0.
 3. Then Prism P1 · Reminders (Nov 23–29), per the plan above.
+
+If processing fails: fix, commit, and upload build 3 with a new output path, e.g.
+`/private/tmp/cue-testflight-0.0.1-3-upload`. See `Docs/TestFlight.md`.
 
 Notes for the next session:
 - Always prefix `swift test` / `xcodebuild` / the TestFlight script with
   `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer` (or run
   `sudo xcode-select -s /Applications/Xcode.app` once).
-- 2026-11-16: Store name changed to "Cue | Doxle". CLAUDE.md branding rule added (approved by Shannon). Icon install added to Phase 0.
+- 2026-11-16: Store name changed to "Cue | Doxle". CLAUDE.md branding rule added (approved by Shannon).
