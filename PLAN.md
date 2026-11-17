@@ -6,7 +6,7 @@ in-repo checklist: updated at the end of every work session.
 
 ## Current milestone: Phase 0 · Setup (Nov 16–22, 2026)
 
-- [x] Key decisions made (iPhone, Swift + SwiftUI, on-phone data, model adapter for AI, one repo, shifts in calendar, name: Cue)
+- [x] Key decisions made (iPhone, Swift + SwiftUI, on-phone data, model adapter for AI, one repo, shifts in calendar, name: Cue; App Store name "Cue | Doxle", home-screen label "Cue")
 - [x] GitHub repo created (slpcc63/cue)
 - [x] Swift package with the domain layer (Belief, Confidence, Unknown) and tests
 - [x] PLAN.md, NEVER-DO.md and .compass files in repo
@@ -14,9 +14,10 @@ in-repo checklist: updated at the end of every work session.
 - [x] `swift test` passes on the Mac (first compile of this code)
 - [x] iPhone app target created (bundle ID `com.slpcc63.cue`), placeholder "Next" card
 - [x] TestFlight script adapted from Prism's (`Scripts/archive-testflight.sh`, `Docs/TestFlight.md`)
-- [x] App record "Cue by SLPCC63" in App Store Connect (Shannon, in the web UI)
+- [x] App record in App Store Connect, renamed "Cue | Doxle" on 2026-11-16 (Shannon, in the web UI)
 - [x] Build 0.0.1 (1) uploaded via the TestFlight script (2026-11-14, from `1ac5790`)
 - [ ] Build 0.0.1 (1) processed and added to Owner Testing in App Store Connect > TestFlight
+- [ ] Approved app icon installed: `assets/cue/cue-guiding-ribbon-v1.png` from the Branding folder (1254×1254 opaque RGB; scale to 1024×1024, no alpha, no rounded corners); home-screen label "Cue"
 - [ ] Cue opens on Shannon's iPhone from TestFlight
 
 ## Then: Prism P1 · Reminders (Nov 23–29) and P2 · V0 hardening (Nov 30–Dec 6)
@@ -116,3 +117,4 @@ Notes for the next session:
   `sudo xcode-select -s /Applications/Xcode.app` once).
 - The app icon is a placeholder (dark background, light card, orange bar); replace
   it whenever there's a real one.
+- 2026-11-16: Store name changed to "Cue | Doxle". CLAUDE.md branding rule added (approved by Shannon). Icon install added to Phase 0.
